@@ -11,4 +11,91 @@ ul {
     
 }
 
+/* Grid Tree */
+#container{
+    /margin: auto;
+    width: 600px;
+    display: grid;
+    grid-template-columns: repeat(10, 20px);
+    grid-template-rows: repeat(12,20px);
+    text-align: center;
+}
 
+    /* User */
+    #user{
+        border: 3px solid rgb(74, 184, 160);
+        border-radius: 50px 50px;
+        grid-column: 4/7;
+        grid-row: 4/7;
+    }
+
+    /* Skills */
+    #skill1{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 6;
+        grid-row: 2;
+    }
+    #skill2{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 8;
+        grid-row: 3;
+    }
+    #skill3{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 9;
+        grid-row: 5;
+    }
+    #skill4{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 8;
+        grid-row: 7;
+    }
+    #skill5{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 6;
+        grid-row: 9;
+    }
+    #skill6{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 4;
+        grid-row: 9;
+    }
+    #skill7{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 2;
+        grid-row: 7;
+    }
+    #skill8{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 2;
+        grid-row: 4;
+    }
+    #skill9{
+        border: 3px solid rgb(71, 37, 224);
+        border-radius: 50px 50px;
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    #skill0{
+        border: 3px double rgb(223, 210, 26);
+        border-radius: 150px 150px;
+        grid-column: 1/10;
+        grid-row: 1/10;
+    }
+    #skill00{
+        border: 3px double rgb(144, 196, 22);
+        border-radius: 150px 150px;
+        grid-column: 3/8;
+        grid-row: 3/8;
+    }
+
+/* Fin Grid Tree */
