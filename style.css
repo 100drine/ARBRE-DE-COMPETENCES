@@ -1,7 +1,8 @@
-ul {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
+.jumbotron{
+    background-image: url("images/foret.jpg");
+    color: white;
+    background-size: cover;
+background-repeat: no-repeat;
 }
 
 
@@ -19,6 +20,7 @@ ul {
     grid-template-columns: repeat(10, 20px);
     grid-template-rows: repeat(12,20px);
     text-align: center;
+  
 }
 
     /* User */
