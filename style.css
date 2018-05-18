@@ -13,7 +13,7 @@ ul {
 
 /* Grid Tree */
 #container{
-    /margin: auto;
+    margin: auto;
     width: 600px;
     display: grid;
     grid-template-columns: repeat(10, 20px);
