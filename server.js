@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-// var {} = require('./utils/utils.js');
+var {createUser} = require('./utils/utils.js');
 
 var bodyparser = require('body-parser')
 app.use(bodyparser.urlencoded({ extended: false }))
@@ -19,13 +19,19 @@ app.get('/register' , function(req,res){
 });
 
 app.post('/registered' , function(req,res) {
-	var new_user = new User(req.body.lastname,req.body.firstname,req.body.mail,req.body.password);
+	var new_user = new createUser(req.body.lastname,req.body.firstname,req.body.mail,req.body.password);
+	new_user.register();
 	res.render('register-success.ejs');
 });
 
 app.get('/signin' , function(req,res){
 	res.render('signin.ejs');
-})
+});
+
+app.post('/signedin' , function(req,res){
+	// fonction qui check si c'est dans la DB (à require depuis utils)
+	res.render('index.ejs');
+});
 
 
 
