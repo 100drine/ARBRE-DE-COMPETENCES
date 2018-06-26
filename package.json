@@ -1,0 +1,24 @@
+{
+  "name": "fil_rouge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/100drine/ARBRE-DE-COMPETENCES.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/100drine/ARBRE-DE-COMPETENCES/issues"
+  },
+  "homepage": "https://github.com/100drine/ARBRE-DE-COMPETENCES#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
