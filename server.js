@@ -14,6 +14,10 @@ app.get('/' , function(req,res){
 	res.render('index.ejs');
 });
 
+app.get('/register' , function(req,res){
+	res.render('register.ejs');
+})
+
 const PORT = process.env.PORT || 8080; 
 
 app.listen(PORT , function(req,res){

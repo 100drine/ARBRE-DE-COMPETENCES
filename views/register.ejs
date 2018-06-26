@@ -1,0 +1,41 @@
+<%- include partials/header.ejs%>
+
+<div class="row mt-3">
+
+	<div class="col"></div>
+
+	<div class="col">
+
+		<form action="/registered" method="post">
+
+			<div class="form-group">
+				<label>Nom</label>
+				<input type="text" class="form-control" placeholder="Entre ton nom" min="3" required>
+			</div>
+
+			<div class="form-group">
+				<label>Prénom</label>
+				<input type="text" class="form-control" placeholder="Entre ton prénom" min="3" required>
+			</div>
+
+			<div class="form-group">
+				<label>Adresse mail</label>
+				<input type="email" class="form-control" placeholder="Entre ton email" required>
+			</div>
+
+			<div class="form-group">
+				<label>Mot de passe</label>
+				<input type="password" class="form-control" placeholder="1 chiffre 1 caractère spécial 1 maj 1 min" min="8" pattern="((?=.*[0-9])(?=.*[A-Z])(?=.*[$@$!%*#?&]).{8,})" required >
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+
+		</form>
+
+	</div>
+
+	<div class="col"></div>
+
+</div>
+
+<%- include partials/footer.ejs%>
