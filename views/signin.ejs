@@ -1,0 +1,31 @@
+<%- include partials/header.ejs %>
+
+<div class="row mt-3">
+
+	<div class="col"></div>
+
+	<div class="col">
+
+		<form action="/signedin" method="post">
+
+			<div class="form-group">
+				<label>Adresse mail</label>
+				<input type="email" class="form-control" placeholder="Entre ton mail" required>
+			</div>
+
+			<div class="form-group">
+				<label>Mot de passe</label>
+				<input type="password" class="form-control" placeholder="Entre ton mot de passe" required >
+			</div>
+
+			<button type="submit" class="btn btn-primary">C'est parti</button>
+
+		</form>
+
+	</div>
+
+	<div class="col"></div>
+
+</div>
+
+<%- include partials/footer.ejs %>
