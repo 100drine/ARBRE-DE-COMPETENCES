@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+var sqlite3 = require('sqlite3').verbose();
 var {createUser} = require('./utils/utils.js');
 
 var bodyparser = require('body-parser')
