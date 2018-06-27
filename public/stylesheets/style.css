@@ -1,4 +1,394 @@
+/*bleu ciel #A3D9EA*/
+
+/*bleu interieur cercle #234C61*/
+
+/*jaune lettres #E2B634*/
+
 #background_accueil{
     width:100%;
 }
 
+#background_vierge{
+    width:100%;
+    margin-top: 50px;
+}
+
+#cercle1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:400px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle2 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:410px;
+    bottom:400px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle3 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:810px;
+    bottom:400px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle4 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:1210px;
+    bottom:400px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle5 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:320px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle6 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:410px;
+    bottom:320px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+    
+#cercle7 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:810px;
+    bottom:320px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle8 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:1210px;
+    bottom:320px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle9 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:240px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle10 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:410px;
+    bottom:240px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle11 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:810px;
+    bottom:240px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle12 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:1210px;
+    bottom:240px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle13 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:160px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle14 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:410px;
+    bottom:160px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle15 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:810px;
+    bottom:160px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle16 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:1210px;
+    bottom:160px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle17 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:80px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle18 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:410px;
+    bottom:80px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle19 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:810px;
+    bottom:80px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle20 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:1210px;
+    bottom:80px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle21 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:0px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle22 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:410px;
+    bottom:0px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle23 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:810px;
+    bottom:0px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle24 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:1210px;
+    bottom:0px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+
+#cercle25 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #234C61;
+    position: absolute;
+    left:10px;
+    bottom:-80px;
+    margin-top:-90px;
+    border: 3px solid #A3D9EA;
+}
+#trait1 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 50px;
+    bottom: 415px;
+}
+
+#trait2 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 450px;
+    bottom: 415px;
+}
+
+#trait3 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 850px;
+    bottom: 415px;
+}
+
+#trait4 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 50px;
+    bottom: 335px;
+}
+
+#trait5 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 450px;
+    bottom: 335px;
+}
+
+#trait6 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 850px;
+    bottom: 335px;
+}
+
+#trait7 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 50px;
+    bottom: 255px;
+}
+
+#trait8 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 450px;
+    bottom: 255px;
+}
+
+#trait9 {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #A3D9EA;
+    position: absolute;
+    left: 850px;
+    bottom: 255px;
+}
