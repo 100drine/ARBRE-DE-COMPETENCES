@@ -1,14 +1,22 @@
 var express = require('express');
 var app = express();
 var sqlite3 = require('sqlite3').verbose();
-var {createUser} = require('./utils/utils.js');
+//var {createUser} = require('./utils/utils.js');
 
-var bodyparser = require('body-parser')
-app.use(bodyparser.urlencoded({ extended: false }))
+var bodyparser = require('body-parser');
+app.use(bodyparser.urlencoded({ extended: false }));
 
 app.set('view engine','ejs');
 
 app.use(express.static(__dirname + '/public'));
+
+var db = new sqlite3.Database("./skilltree.db" , sqlite3.OPEN_READWRITE, function(err){
+	if(err) {
+		console.log(err.message);}
+	else {
+		console.log("Connecté à la DB")
+		}
+});
 
 app.get('/' , function(req,res){
 	res.render('index.ejs');
@@ -19,9 +27,19 @@ app.get('/register' , function(req,res){
 });
 
 app.post('/registered' , function(req,res) {
-	var new_user = new createUser(req.body.lastname,req.body.firstname,req.body.mail,req.body.password);
-	new_user.register();
-	res.render('register-success.ejs');
+	var sqlCreateUser = 'INSERT INTO Simplonien (nom,prenom,email,mdp) VALUES ("'+req.body.lastname+'","'+req.body.firstname+'","'+req.body.mail+'","'+req.body.password+'");'; 
+	db.serialize(function(){
+		db.all(sqlCreateUser, function (err, row) {
+			if (err) {
+				console.log(err.message);
+				return;
+			}
+
+			res.render('register-success.ejs');
+		});
+
+	});
+	
 });
 
 app.get('/signin' , function(req,res){
