@@ -37,10 +37,14 @@
 
 }
 
-.shadow {
+.shad {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     background: #E2B634;
     border: #E2B634;
     color:#234C61;
+    text-align: center;
     border-radius: 20px;
     box-shadow: 0 0 10px #ffffff,
                 0 0 20px #ffffff,

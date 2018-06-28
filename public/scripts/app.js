@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('.cercle').click(function(){
-        $(this).toggleClass ("cercle shadow");
+        $(this).toggleClass ("cercle shad");
     });
     
     
