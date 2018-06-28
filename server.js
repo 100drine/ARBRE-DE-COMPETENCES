@@ -56,13 +56,16 @@ app.post('/registered', function(req,res){
 	console.log(req.body.lastname);
 	
 	connection.query('INSERT INTO simplonien SET ?', simplonien, (err, res) => {
-  		if(err) throw err;
-
+		if (err) {
+			console.log(err.message);
+			return;
+		}
 		console.log('Last insert ID:', res.insertId);
 		
-		res.render('register-success.ejs');
-});
-
+	});
+	res.render('register-success.ejs');
+	
+	
 })
 /*
 app.post('/registered' , function(req,res) {
