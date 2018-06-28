@@ -34,7 +34,6 @@ app.post('/registered' , function(req,res) {
 				console.log(err.message);
 				return;
 			}
-
 			res.render('register-success.ejs');
 		});
 
