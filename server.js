@@ -55,6 +55,9 @@ app.get('/arbre' , function(req,res){
     res.render('arbre.ejs');
 });
 
+app.get('/grille' , function(req,res){
+    res.render('grid.ejs');
+});
 
 const PORT = process.env.PORT || 8080; 
 
