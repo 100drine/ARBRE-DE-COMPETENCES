@@ -6,7 +6,11 @@ var {createUser} = require('./utils/utils.js');
 var bodyparser = require('body-parser');
 
 
-// Connexion à la bdd distante
+// Connexion à la bdd distante 
+// commande pour acceder a la bdd a distance:
+// mysql -h sql7.freemysqlhosting.net -u sql7244923 -p
+// pwd: ezgxfQBbRa
+// Port number: 3306
 var connection = mysql.createConnection({
     host: 'sql7.freemysqlhosting.net',
     user: 'sql7244923',
@@ -31,11 +35,12 @@ app.use(express.static(__dirname + '/public'));
 		}
 });*/
 
-// Mise en place de la bdd et ouverture
-connection.connect((err) => {
-	if (err) throw err;
-	console.log('Database Connected!');
-});
+
+/*connection.query('DESCRIBE vote', (err,rows) => {
+	if(err) throw err;
+  
+	console.log('Data received from Db:\n')
+  });*/
 
 // Les differentes routes
 app.get('/' , function(req,res){
@@ -46,7 +51,19 @@ app.get('/register' , function(req,res){
 	res.render('register.ejs');
 });
 
+app.post('/registered', function(req,res){
+	const simplonien = { nom: req.body.lastname, prenom: req.body.firstname, email: req.body.mail, mdp: req.body.password };
+	console.log(req.body.lastname);
+	
+	connection.query('INSERT INTO simplonien SET ?', simplonien, (err, res) => {
+  		if(err) throw err;
 
+		console.log('Last insert ID:', res.insertId);
+		
+		res.render('register-success.ejs');
+});
+
+})
 /*
 app.post('/registered' , function(req,res) {
 	var sqlCreateUser = 'INSERT INTO simplonien (nom,prenom,email,mdp) VALUES ("'+req.body.lastname+'","'+req.body.firstname+'","'+req.body.mail+'","'+req.body.password+'");'; 
