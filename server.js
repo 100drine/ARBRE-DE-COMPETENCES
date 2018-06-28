@@ -50,6 +50,9 @@ app.post('/signedin' , function(req,res){
 	res.render('index.ejs');
 });
 
+app.get('/arbre' , function(req,res){
+    res.render('arbre.ejs');
+});
 
 
 const PORT = process.env.PORT || 8080; 
