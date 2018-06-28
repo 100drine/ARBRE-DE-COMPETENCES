@@ -20,7 +20,7 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    background: #234C61;
+    background:url("../images/High-Quality-White-Marble-Texture.jpg");
    /* margin-top:-90px;*/
     border: 3px solid #A3D9EA;
    /* padding: 50px;*/
@@ -39,13 +39,14 @@
 
 .shad {
     width: 40px;
-    height: 40px;
+    height: 120px;
     line-height: 40px;
-    background: #E2B634;
+    background:url("../images/Mercury_4.jpg") ;
+    background-size: cover;
     border: #E2B634;
     color:#234C61;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 100px;
     box-shadow: 0 0 10px #ffffff,
                 0 0 20px #ffffff,
                 0 0 30px #ffffff,
