@@ -96,7 +96,7 @@ app.get('/arbre' , function(req,res){
     res.render('arbre.ejs');
 });
 
-<<<<<<< HEAD
+
 app.get('/grille' , function(req,res){
     res.render('grid.ejs');
 });
