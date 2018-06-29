@@ -98,7 +98,14 @@ app.post('/loggedin' , function(req,res){
 });
 
 app.get('/arbre' , function(req,res){
-    res.render('arbre.ejs');
+	var memberlist = connection.query('SELECT prenom FROM simplonien' , (err,result) => {
+		if (err) {
+			console.log(err.message);
+			return;
+		}
+		res.render('arbre.ejs' , {memberlist:memberlist} );
+    
+});
 });
 
 
