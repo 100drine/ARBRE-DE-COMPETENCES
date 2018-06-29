@@ -20,7 +20,7 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    background:url("../images/High-Quality-White-Marble-Texture.jpg");
+    background:#234C61;
    /* margin-top:-90px;*/
     border: 3px solid #A3D9EA;
    /* padding: 50px;*/
@@ -37,22 +37,32 @@
 
 }
 
+.traitshad {
+    width: 360px;
+    height: 3px;
+    border: 2px solid #E2B634;
+    color:#E2B634;
+    border-radius: 100px;
+    box-shadow: 0 0 10px #E2B634,
+                0 0 20px #E2B634,
+                0 0 20px #E2B634,
+                0 0 20px #E2B634;
+
+}
+
 .shad {
     width: 40px;
-    height: 120px;
-    background:url("../images/Mercury_4.jpg") ;
+    height: 40px;
+    background: #E2B634;
     background-size: cover;
     border: #E2B634;
     color:#234C61;
     border-radius: 100px;
-    box-shadow: 0 0 10px #ffffff,
-                0 0 20px #ffffff,
-                0 0 30px #ffffff,
-                0 0 40px #228DFF,
-                0 0 70px #228DFF,
-                0 0 80px #228DFF,
-                0 0 100px #228DFF,
-                0 0 150px #228DFF;
+    box-shadow: 0 0 10px #E2B634,
+                0 0 20px #E2B634,
+                0 0 20px #E2B634,
+                0 0 20px #E2B634;
+
 }
 
 #cercle1 {
