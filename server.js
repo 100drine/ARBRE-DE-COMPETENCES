@@ -94,18 +94,18 @@ app.post('/loggedin' , function(req,res){
 		if (err) {
 			console.log(err.message);
 			return;
-		} else if ((rows[0].email === req.body.email) && (rows[0].mdp === req.body.pwd)) {	  
+		}else if ((rows[0].email === req.body.email) && (rows[0].mdp === req.body.pwd)) {	  
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
 			console.log('You are connected. Welcome!');
-			res.render('index.ejs');
-		} else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
+			res.redirect('/');
+		}else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
 			res.send('Invalid password!');
-		} else if (req.body.email !== rows[0].email) {
-			console.log("test",rows[0].email);
-				  
+		}else if (req.body.email !== rows[0].email) {
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
 			res.send('You are not logged! Dommage!');
+		}else{
+			res.send('There is a problem!')
 		};
 	});
 });
