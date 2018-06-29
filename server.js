@@ -47,11 +47,11 @@ app.get('/' , function(req,res){
 	res.render('index.ejs');
 });
 
-app.get('/register' , function(req,res){
-	res.render('register.ejs');
+app.get('/signup' , function(req,res){
+	res.render('signup.ejs');
 });
 
-app.post('/registered', function(req,res){
+app.post('/signedup', function(req,res){
 	const simplonien = { nom: req.body.lastname, prenom: req.body.firstname, email: req.body.mail, mdp: req.body.password };
 	console.log(req.body.lastname);
 	
@@ -63,7 +63,7 @@ app.post('/registered', function(req,res){
 		console.log('Last insert ID:', res.insertId);
 		
 	});
-	res.render('register-success.ejs');
+	res.render('signup-success.ejs');
 	
 	
 })
@@ -83,11 +83,11 @@ app.post('/registered' , function(req,res) {
 	
 });*/
 
-app.get('/signin' , function(req,res){
-	res.render('signin.ejs');
+app.get('/login' , function(req,res){
+	res.render('login.ejs');
 });
 
-app.post('/signedin' , function(req,res){
+app.post('/loggedin' , function(req,res){
 	// fonction qui check si c'est dans la DB (à require depuis utils)
 	res.render('index.ejs');
 });
