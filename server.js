@@ -52,7 +52,12 @@ app.get('/signup' , function(req,res){
 });
 
 app.post('/signedup', function(req,res){
-	const simplonien = { nom: req.body.lastname, prenom: req.body.firstname, email: req.body.mail, mdp: req.body.password };
+	const simplonien = { 
+		nom: req.body.lastname, 
+		prenom: req.body.firstname, 
+		email: req.body.mail, 
+		mdp: req.body.password };
+		
 	console.log(req.body.lastname);
 	
 	connection.query('INSERT INTO simplonien SET ?', simplonien, (err, res) => {
@@ -84,6 +89,7 @@ app.post('/registered' , function(req,res) {
 });*/
 
 app.get('/login' , function(req,res){
+
 	res.render('login.ejs');
 });
 
