@@ -88,7 +88,24 @@ app.get('/login' , function(req,res){
 
 app.post('/loggedin' , function(req,res){
 	// fonction qui check si c'est dans la DB (à require depuis utils)
-	res.render('index.ejs');
+	var reqmail='SELECT email, mdp FROM simplonien WHERE email="'+req.body.email+'";';
+
+	connection.query(reqmail, (err,row) => {
+		if (err) {
+			console.log(err.message);
+			return;
+		} else if ((row.email === req.body.email) && (row.mdp === req.body.pwd)) {	  
+			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
+			console.log('You are connected. Welcome!');
+			res.render('index.ejs');
+		} else if ((row.email === req.body.email) && (row.mdp !== req.body.pwd)) {	  
+			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
+			res.send('Invalid password!');
+		} else if (row.email !== req.body.email) {	  
+			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
+			res.send('You are not logged! Dommage!');
+		};
+	});
 });
 
 app.get('/arbre' , function(req,res){
