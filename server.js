@@ -60,18 +60,17 @@ app.post('/signedup', function(req,res){
 		
 	console.log(req.body.lastname);
 	
-	connection.query('INSERT INTO simplonien SET ?', simplonien, (err, res) => {
+	connection.query('INSERT INTO simplonien SET ?', simplonien, (err, response) => {
 		if (err) {
 			console.log(err.message);
 			return;
+		}else{
+		console.log('Last insert ID:', response.insertId);
+		res.render('signup-success.ejs');
 		}
-		console.log('Last insert ID:', res.insertId);
-		
 	});
-	res.render('signup-success.ejs');
-	
-	
-})
+});
+
 /*
 app.post('/registered' , function(req,res) {
 	var sqlCreateUser = 'INSERT INTO simplonien (nom,prenom,email,mdp) VALUES ("'+req.body.lastname+'","'+req.body.firstname+'","'+req.body.mail+'","'+req.body.password+'");'; 
