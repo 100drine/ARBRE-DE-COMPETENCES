@@ -105,8 +105,7 @@ app.get('/arbre' , function(req,res){
 		socket.on('up1',function(data){
 			console.log("ok to transfert DATA!!!!!!! " + data);	
 
-			// Probleme avec FK idarbre
-			connection.query('INSERT INTO vote (idsimplonien,uservoté,idarbre,note) VALUES ("'+ sonid +'", "' + sonid + '", "' + sonid + '", "' + 1 + '");', function(err,rows) {
+			connection.query('INSERT INTO arbre (idarbre,comp1) VALUES ("'+ sonid + '",1);' , function(err,rows) {
 				if (err) {
 					console.log(err.message);
 					return;
@@ -114,6 +113,16 @@ app.get('/arbre' , function(req,res){
 				console.log('Data received from Db:\n');
 				console.log(rows);
 			  });
+
+			  connection.query('INSERT INTO vote (idsimplonien,uservoté,idarbre,note,comp) VALUES ("'+ sonid +'", "' + sonid + '", "' + sonid + '", 1, 1);', function(err,rows) {
+				if (err) {
+					console.log(err.message);
+					return;
+				}      
+				console.log('Data received from Db:\n');
+				console.log(rows);
+			  });
+			  
 		})
 	});
 
