@@ -1,13 +1,10 @@
 $(document).ready(function(){
 
-    $('.cercle').click(function(){
-        $(this).toggleClass ("shad");
-
-    });
-
     var socket = io();
-    $('.cercle1').click(function(){
-          socket.emit('up1', "lolipopo");
+    $('.cercle').one('click',function(){
+        $(this).toggleClass ("shad");
+        console.log('La valeur est :' + $(this).attr('value'));
+        socket.emit('up', [$(this).attr('value'),$(this).attr('comp')]);
       });
       
 });

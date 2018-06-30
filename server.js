@@ -67,6 +67,7 @@ app.get('/login' , function(req,res){
 
 var emailsimplonien;
 var sonid;
+var arbreid;
 
 app.post('/loggedin' , function(req,res){
 	// fonction qui check si c'est dans la DB (à require depuis utils)
@@ -83,6 +84,17 @@ app.post('/loggedin' , function(req,res){
 
 			emailsimplonien=rows[0].email;
 			sonid=rows[0].idsimplonien;
+
+			connection.query('INSERT INTO arbre (comp1) VALUES ("NULL");' , function(err,rows) {
+				if (err) {
+					console.log(err.message);
+					return;
+				}     
+				console.log(rows.insertId);
+				arbreid=rows.insertId
+				console.log('Data received from Db:\n');
+				console.log(rows);
+			  });
 			
 			res.redirect('arbre');
 		}else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
@@ -102,19 +114,21 @@ app.get('/arbre' , function(req,res){
 	io.on('connection', function (socket) {
 		console.log('conection socket.io');
 		
-		socket.on('up1',function(data){
+		socket.on('up',function(data){
+
 			console.log("ok to transfert DATA!!!!!!! " + data);	
 
-			connection.query('INSERT INTO arbre (idarbre,comp1) VALUES ("'+ sonid + '",1);' , function(err,rows) {
+			connection.query('UPDATE arbre SET comp' + data[1] + '="' + data[0] + '" WHERE idarbre="' + arbreid + '";' , function(err,rows) {
 				if (err) {
 					console.log(err.message);
 					return;
-				}      
+				}     
+
 				console.log('Data received from Db:\n');
 				console.log(rows);
 			  });
 
-			  connection.query('INSERT INTO vote (idsimplonien,uservoté,idarbre,note,comp) VALUES ("'+ sonid +'", "' + sonid + '", "' + sonid + '", 1, 1);', function(err,rows) {
+			  connection.query('INSERT INTO vote (idsimplonien,uservoté,idarbre,note,comp) VALUES ("'+ sonid +'", "' + sonid + '", "' + arbreid + '","'+ data[0] + '","' + data[1] + '");', function(err,rows) {
 				if (err) {
 					console.log(err.message);
 					return;
