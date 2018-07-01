@@ -21,6 +21,13 @@
 			<div class="form-group">
 				<label>Adresse mail</label>
 				<input type="email" class="form-control" name="mail" placeholder="Entre ton email" required>
+			
+
+			<% if (used) { %>
+
+			<small class="alertmsg form-text">Mail déjà utilisé</small>
+
+			<% } %>
 			</div>
 
 			<div class="form-group">

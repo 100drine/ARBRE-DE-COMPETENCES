@@ -42,19 +42,19 @@ app.get('/' , function(req,res){
 
 // L Enregistrement
 app.get('/signup' , function(req,res){
-	res.render('signup.ejs');
+	res.render('signup.ejs', {used:false});
 });
 
 app.post('/signedup', function(req,res,next){
 	
 	console.log(req.body.lastname);
 
-	var checkmail = 'SELECT count(email) FROM simplonien WHERE email = "'+req.body.mail+'"';
+	var checkmail = 'SELECT count(email) AS total FROM simplonien WHERE email = "'+req.body.mail+'"';
 
 	connection.query(checkmail , function(err,rows) {
-		if(rows === 0) {
+		if(rows[0].total === 0) {
 
-	
+
 	// On crée un arbre
 	connection.query('INSERT INTO arbre (comp1) VALUES (NULL);' , function(err,rows) {
 		if (err) {
@@ -88,7 +88,7 @@ app.post('/signedup', function(req,res,next){
 	});
 }
 
-else res.send('Mail déjà utilisé')
+else res.render('signup.ejs' , {used:true})
 
 });
 
@@ -141,7 +141,7 @@ app.get('/arbre', function(req,res){
 
 	// Communication grace à Socket.io
 	io.on('connection', function (socket) {
-		console.log('conection socket.io');
+		console.log('connection socket.io');
 		
 		// On recupere l arbre du connecté
 		connection.query('SELECT * FROM arbre WHERE idarbre=( SELECT idarbre FROM simplonien WHERE idsimplonien="' + sonid + '");' , function(err,rows) {
