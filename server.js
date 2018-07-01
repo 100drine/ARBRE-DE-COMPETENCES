@@ -212,6 +212,10 @@ app.get('/grille' , function(req,res){
     res.render('grid.ejs');
 });
 
+app.get('/darksouls' , function(req,res){
+	res.redirect('https://www.youtube.com/watch?v=AB6sOhQan9Y')
+})
+
 // Definition et ecoute du port
 const PORT = process.env.PORT || 8080; 
 
