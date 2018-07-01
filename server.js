@@ -107,13 +107,17 @@ app.get('/login' , function(req,res){
 app.post('/loggedin' , function(req,res){
 
 	// Verification de l email et du mot de passe
-	var reqmail='SELECT idsimplonien, email, mdp, idarbre FROM simplonien WHERE email="'+req.body.email+'";';
+	var reqmail='SELECT idsimplonien, email , count(email) AS total, mdp, idarbre FROM simplonien WHERE email="'+req.body.email+'";';
 
-	connection.query(reqmail, (err,rows) => {
+	connection.query(reqmail,function (err,rows) {
 		if (err) {
 			console.log(err.message);
 			return;
-		}else if ((rows[0].email === req.body.email) && (rows[0].mdp === req.body.pwd)) {
+		}
+		else if (rows[0].total === 0)
+			res.render('login.ejs' , {wrongmail:true , wrongpass:false});
+
+			else if ((rows[0].email === req.body.email) && (rows[0].mdp === req.body.pwd)) {
 
 			// Quand tout match: email et mdp
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd + ' et l id: ' + rows[0].idsimplonien);
@@ -122,19 +126,14 @@ app.post('/loggedin' , function(req,res){
 			emailsimplonien=rows[0].email;
 			sonid=rows[0].idsimplonien;
 			
-			res.redirect('arbre');
+			res.redirect('arbre'); }
 
-		}else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
-			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
-			res.render('login.ejs',{wrongpass:true , wrongmail:false});
-		}else if ((req.body.email !== rows[0].email) && (rows[0].mdp === req.body.pwd) ) {
-			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
-			res.render('login.ejs' , {wrongmail:true , wrongpass:false});
-		}else{
-			res.render('login.ejs' , {wrongmail:true , wrongpass:true});
-		};
+		else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd))
+			res.render('login.ejs' , {wrongmail:false , wrongpass:true});  
+
 	});
 });
+
 
 // L Arbre du connecté
 app.get('/arbre', function(req,res){
