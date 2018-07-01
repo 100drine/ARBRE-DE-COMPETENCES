@@ -48,7 +48,7 @@ app.get('/signup' , function(req,res){
 app.post('/signedup', function(req,res,next){
 	
 	console.log(req.body.lastname);
-	var arbresignid;
+	
 	// On crée un arbre
 	connection.query('INSERT INTO arbre (comp1) VALUES (NULL);' , function(err,rows) {
 		if (err) {
@@ -96,7 +96,7 @@ app.get('/login' , function(req,res){
 app.post('/loggedin' , function(req,res){
 
 	// Verification de l email et du mot de passe
-	var reqmail='SELECT idsimplonien, email, mdp FROM simplonien WHERE email="'+req.body.email+'";';
+	var reqmail='SELECT idsimplonien, email, mdp, idarbre FROM simplonien WHERE email="'+req.body.email+'";';
 
 	connection.query(reqmail, (err,rows) => {
 		if (err) {
@@ -126,14 +126,14 @@ app.post('/loggedin' , function(req,res){
 });
 
 // L Arbre du connecté
-app.get('/arbre' , function(req,res){
+app.get('/arbre', function(req,res){
 
 	// Communication grace à Socket.io
 	io.on('connection', function (socket) {
 		console.log('conection socket.io');
 		
 		// On recupere l arbre du connecté
-		connection.query('SELECT * FROM arbre WHERE idarbre="' + arbreid + '";' , function(err,rows) {
+		connection.query('SELECT * FROM arbre WHERE idarbre=( SELECT idarbre FROM simplonien WHERE idsimplonien="' + sonid + '");' , function(err,rows) {
 			if (err) {
 				console.log(err.message);
 				return;
@@ -142,7 +142,7 @@ app.get('/arbre' , function(req,res){
 				var note="comp"+i;
 				if (rows[0].note != 0){
 					console.log(note);
-					socket.emit("toligth",[i,rows[0][note]])
+					socket.emit("toligth",[i,rows[0][note]]);
 					console.log('Emission de tolight!!!'+rows[0][note]+'\n');
 					
 				}				
