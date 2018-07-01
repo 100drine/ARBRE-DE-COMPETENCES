@@ -11,11 +11,21 @@
 			<div class="form-group">
 				<label>Adresse mail</label>
 				<input type="email" name="email" class="form-control" placeholder="Entre ton mail" required>
+				<% if (wrongmail) { %>
+
+				<small class="alertmsg form-text">Ce mail n'est pas attribué</small>
+
+				<% } %>
 			</div>
 
 			<div class="form-group">
 				<label>Mot de passe</label>
 				<input type="password" name="pwd" class="form-control" placeholder="Entre ton mot de passe" required >
+				<% if (wrongpass) { %>
+
+				<small class="alertmsg form-text">Mot de passe erroné</small>
+
+				<% } %>
 			</div>
 
 			<button type="submit" class="btn btn-primary">C'est parti</button>

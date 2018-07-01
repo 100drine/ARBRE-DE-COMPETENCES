@@ -100,7 +100,7 @@ else res.render('signup.ejs' , {used:true})
 // La Connexion
 app.get('/login' , function(req,res){
 
-	res.render('login.ejs');
+	res.render('login.ejs' , {wrongpass:false , wrongmail:false});
 });
 
 
@@ -126,12 +126,12 @@ app.post('/loggedin' , function(req,res){
 
 		}else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
-			res.send('Invalid password!');
-		}else if ((req.body.email !== rows[0].email)) {
+			res.render('login.ejs',{wrongpass:true , wrongmail:false});
+		}else if ((req.body.email !== rows[0].email) && (rows[0].mdp === req.body.pwd) ) {
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
-			res.send('You are not logged! Dommage!');
+			res.render('login.ejs' , {wrongmail:true , wrongpass:false});
 		}else{
-			res.send('There is a problem!')
+			res.render('login.ejs' , {wrongmail:true , wrongpass:true});
 		};
 	});
 });
