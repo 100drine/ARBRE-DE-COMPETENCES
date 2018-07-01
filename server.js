@@ -30,15 +30,20 @@ app.use(express.static(__dirname + '/public'));
 
 
 // Les differentes routes
+
+// l Acceuil
 app.get('/' , function(req,res){
 	res.render('index.ejs');
 });
 
+// L Enregistrement
 app.get('/signup' , function(req,res){
 	res.render('signup.ejs');
 });
 
 app.post('/signedup', function(req,res){
+	
+	// Procedure d enregistrement dans la BDD
 	const simplonien = { 
 		nom: req.body.lastname, 
 		prenom: req.body.firstname, 
@@ -59,18 +64,20 @@ app.post('/signedup', function(req,res){
 });
 
 
-
+// La Connexion
 app.get('/login' , function(req,res){
 
 	res.render('login.ejs');
 });
 
+// Stockage de variable necessaire par la suite
 var emailsimplonien;
 var sonid;
 var arbreid;
 
 app.post('/loggedin' , function(req,res){
-	// fonction qui check si c'est dans la DB (à require depuis utils)
+
+	// Verification de l email et du mot de passe
 	var reqmail='SELECT idsimplonien, email, mdp FROM simplonien WHERE email="'+req.body.email+'";';
 
 	connection.query(reqmail, (err,rows) => {
@@ -109,11 +116,14 @@ app.post('/loggedin' , function(req,res){
 	});
 });
 
+// L Arbre du connecté
 app.get('/arbre' , function(req,res){
-	//Socket.io
+
+	// Communication grace à Socket.io
 	io.on('connection', function (socket) {
 		console.log('conection socket.io');
 		
+		// On recupere l arbre du connecté
 		connection.query('SELECT * FROM arbre WHERE idarbre="' + arbreid + '";' , function(err,rows) {
 			if (err) {
 				console.log(err.message);
@@ -128,15 +138,16 @@ app.get('/arbre' , function(req,res){
 					
 				}				
 			}
-			
 			console.log('Data received from Db:\n');
 			console.log(rows);
 		  });
 		
+		// On ecoute l event 'up' pour changer la BDD a chaque clic sur un cercle (competence nouvelle)
 		socket.on('up',function(data){
 
 			console.log("ok to transfert DATA!!!!!!! " + data);	
-
+			
+			// A chaque event 'up' on change la valeur de la competence
 			connection.query('UPDATE arbre SET comp' + data[1] + '="' + data[0] + '" WHERE idarbre="' + arbreid + '";' , function(err,rows) {
 				if (err) {
 					console.log(err.message);
@@ -147,6 +158,7 @@ app.get('/arbre' , function(req,res){
 				console.log(rows);
 			  });
 
+			  // Ici on incremente la table vote et on connait alors chaque vote effectué
 			  connection.query('INSERT INTO vote (idsimplonien,uservoté,idarbre,note,comp) VALUES ("'+ sonid +'", "' + sonid + '", "' + arbreid + '","'+ data[0] + '","' + data[1] + '");', function(err,rows) {
 				if (err) {
 					console.log(err.message);
