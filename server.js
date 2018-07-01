@@ -49,7 +49,11 @@ app.post('/signedup', function(req,res,next){
 	
 	console.log(req.body.lastname);
 
-	var checkmail = 'SELECT email FROM simplonien WHERE email = "'+req.body.mail+'"';
+	var checkmail = 'SELECT count(email) FROM simplonien WHERE email = "'+req.body.mail+'"';
+
+	connection.query(checkmail , function(err,rows) {
+		if(rows === 0) {
+
 	
 	// On crée un arbre
 	connection.query('INSERT INTO arbre (comp1) VALUES (NULL);' , function(err,rows) {
@@ -82,6 +86,11 @@ app.post('/signedup', function(req,res,next){
 			}
 		});
 	});
+}
+
+else res.send('Mail déjà utilisé')
+
+});
 
 	  
 	
