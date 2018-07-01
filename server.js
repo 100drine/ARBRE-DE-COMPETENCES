@@ -18,6 +18,10 @@ var connection = mysql.createConnection({
     database: 'sql7244923'
 });
 
+// Stockage de variable necessaire par la suite
+var emailsimplonien;
+var sonid;
+var arbreid;
 
 // Mise en route de body-parser
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -52,6 +56,7 @@ app.post('/signedup', function(req,res){
 		
 	console.log(req.body.lastname);
 	
+	// On enregistre le simplonien
 	connection.query('INSERT INTO simplonien SET ?', simplonien, function(err, response) {
 		if (err) {
 			console.log(err.message);
@@ -61,6 +66,17 @@ app.post('/signedup', function(req,res){
 		res.render('signup-success.ejs');
 		}
 	});
+	// On lui crée un arbre
+	connection.query('INSERT INTO arbre (comp1) VALUES ("NULL");' , function(err,rows) {
+		if (err) {
+			console.log(err.message);
+			return;
+		}     
+		console.log(rows.insertId);
+		arbreid=rows.insertId
+		console.log('Data received from Db:\n');
+		console.log(rows);
+	  });
 });
 
 
@@ -70,10 +86,6 @@ app.get('/login' , function(req,res){
 	res.render('login.ejs');
 });
 
-// Stockage de variable necessaire par la suite
-var emailsimplonien;
-var sonid;
-var arbreid;
 
 app.post('/loggedin' , function(req,res){
 
@@ -86,24 +98,15 @@ app.post('/loggedin' , function(req,res){
 			return;
 		}else if ((rows[0].email === req.body.email) && (rows[0].mdp === req.body.pwd)) {
 
+			// Quand tout match: email et mdp
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd + ' et l id: ' + rows[0].idsimplonien);
 			console.log('You are connected. Welcome!');
 
 			emailsimplonien=rows[0].email;
 			sonid=rows[0].idsimplonien;
-
-			connection.query('INSERT INTO arbre (comp1) VALUES ("NULL");' , function(err,rows) {
-				if (err) {
-					console.log(err.message);
-					return;
-				}     
-				console.log(rows.insertId);
-				arbreid=rows.insertId
-				console.log('Data received from Db:\n');
-				console.log(rows);
-			  });
 			
 			res.redirect('arbre');
+			
 		}else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
 			res.send('Invalid password!');
