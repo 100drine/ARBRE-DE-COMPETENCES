@@ -114,6 +114,25 @@ app.get('/arbre' , function(req,res){
 	io.on('connection', function (socket) {
 		console.log('conection socket.io');
 		
+		connection.query('SELECT * FROM arbre WHERE idarbre="' + arbreid + '";' , function(err,rows) {
+			if (err) {
+				console.log(err.message);
+				return;
+			};
+			for (let i = 1; i < 11; i++) {
+				var note="comp"+i;
+				if (rows[0].note != 0){
+					console.log(note);
+					socket.emit("toligth",[i,rows[0][note]])
+					console.log('Emission de tolight!!!'+rows[0][note]+'\n');
+					
+				}				
+			}
+			
+			console.log('Data received from Db:\n');
+			console.log(rows);
+		  });
+		
 		socket.on('up',function(data){
 
 			console.log("ok to transfert DATA!!!!!!! " + data);	
