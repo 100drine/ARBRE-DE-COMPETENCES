@@ -55,6 +55,8 @@ app.post('/signedup', function(req,res){
 		mdp: req.body.password };
 		
 	console.log(req.body.lastname);
+
+	var checkmail = 'SELECT email FROM simplonien WHERE email = "'+req.body.mail+'"';
 	
 	// On enregistre le simplonien
 	connection.query('INSERT INTO simplonien SET ?', simplonien, function(err, response) {
