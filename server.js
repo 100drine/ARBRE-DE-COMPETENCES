@@ -45,38 +45,44 @@ app.get('/signup' , function(req,res){
 	res.render('signup.ejs');
 });
 
-app.post('/signedup', function(req,res){
+app.post('/signedup', function(req,res,next){
 	
-	// Procedure d enregistrement dans la BDD
-	const simplonien = { 
-		nom: req.body.lastname, 
-		prenom: req.body.firstname, 
-		email: req.body.mail, 
-		mdp: req.body.password };
-		
 	console.log(req.body.lastname);
-	
-	// On enregistre le simplonien
-	connection.query('INSERT INTO simplonien SET ?', simplonien, function(err, response) {
-		if (err) {
-			console.log(err.message);
-			return;
-		}else{
-		console.log('Last insert ID:', response.insertId);
-		res.render('signup-success.ejs');
-		}
-	});
-	// On lui crée un arbre
-	connection.query('INSERT INTO arbre (comp1) VALUES ("NULL");' , function(err,rows) {
+	var arbresignid;
+	// On crée un arbre
+	connection.query('INSERT INTO arbre (comp1) VALUES (NULL);' , function(err,rows) {
 		if (err) {
 			console.log(err.message);
 			return;
 		}     
 		console.log(rows.insertId);
-		arbreid=rows.insertId
+		arbreid = rows.insertId;
+		console.log('nouveau arbreid: '+arbreid);
+		
 		console.log('Data received from Db:\n');
 		console.log(rows);
-	  });
+
+		// On enregistre le simplonien
+		var simplonien = { 
+			idarbre: arbreid,
+			nom: req.body.lastname, 
+			prenom: req.body.firstname, 
+			email: req.body.mail, 
+			mdp: req.body.password
+		};
+		connection.query('INSERT INTO simplonien SET ?', simplonien, function(err, response) {
+			if (err) {
+				console.log(err.message);
+				return;
+			}else{
+				console.log('Last insert ID:', response.insertId);
+				res.render('signup-success.ejs');
+			}
+		});
+	});
+
+	  
+	
 });
 
 
@@ -106,7 +112,7 @@ app.post('/loggedin' , function(req,res){
 			sonid=rows[0].idsimplonien;
 			
 			res.redirect('arbre');
-			
+
 		}else if ((rows[0].email === req.body.email) && (rows[0].mdp !== req.body.pwd)) {	  
 			console.log('requete email: ' + req.body.email + ' et ' + req.body.pwd);			
 			res.send('Invalid password!');
